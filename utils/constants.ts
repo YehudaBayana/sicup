@@ -1,28 +1,33 @@
-export const SERVER_DOMAIN: string = "http://localhost:5001/";
-export const clientId: string = "057cdd5b992444f2858403e816dcae20";
+import { Item } from "./types";
 
-export const reducerActionTypes = {
-  SET_ACCESS_TOKEN: "setAccessToken" as const,
-  SET_SEARCH: "setSearch" as const,
-  SET_SEARCH_RESULTS: "setSearchResults" as const,
-  SET_PLAYING_TRACK: "setPlayingTrack" as const,
-  SET_IS_CLICKED: "setIsClicked" as const,
-  SET_PLAYLIST: "setPlaylist" as const,
-  SET_SAVED_TRACKS: "setSavedTracks" as const,
-  SET_DETAIL: "setDetail" as const,
-  SET_USER_PLAYLISTS: "setUserPlaylists" as const,
-  SET_USER_ALBUMS: "setUserAlbums" as const,
-  SET_GENRES: "setGenres" as const,
-  SET_CATEGORIES: "setCategories" as const,
-  SET_USER_DETAILS: "setUserDetails" as const,
-  SET_IS_LOADING: "setIsLoading" as const,
-  SET_PLAYLIST_DES: "setPlaylistDes" as const,
-  SET_ALBUM: "setAlbum" as const,
-  SET_IS_DRAGGING: "setIsDragging" as const,
-  SET_QUEUE: "setQueue" as const,
-  UPDATE_QUEUE: "updateQueue" as const,
-  SET_CHECKED_TRACKS: "setCheckedTracks" as const,
-  SET_LISTEN_AGAIN_TRACKS: "setListenAgainTracks" as const,
+export const SERVER_DOMAIN: string = "http://localhost:5001/";
+// import { Item } from "../types/Item";
+
+export const initialItems: Item[] = [
+  { id: "1", content: "Item 1" },
+  { id: "2", content: "Item 2" },
+  { id: "3", content: "Item 3" },
+  { id: "4", content: "Item 4" },
+  { id: "21", content: "Item 1" },
+  { id: "22", content: "Item 2" },
+  { id: "23", content: "Item 3" },
+  { id: "24", content: "Item 4" },
+  { id: "41", content: "Item 1" },
+  { id: "52", content: "Item 2" },
+  { id: "63", content: "Item 3" },
+  { id: "74", content: "Item 4" },
+  { id: "31", content: "Item 1" },
+  { id: "32", content: "Item 2" },
+  { id: "33", content: "Item 3" },
+  { id: "34", content: "Item 4" },
+];
+
+export const QueryKeys = {
+  Me: ["getProfile"] as const,
+  MyPlaylists: ["getMyPlaylists"] as const,
+  MyAlbums: ["getMyAlbums"] as const,
+  Album: (id: string) => ["getAlbum", id] as const,
+  Playlist: (id: string) => ["getPlaylist", id] as const,
 };
 
 export const searchMenu: string[] = [
@@ -32,6 +37,15 @@ export const searchMenu: string[] = [
   "episodes",
   "shows",
 ];
+
+export const routes = {
+  albums: "/albums",
+  playlists: "/playlists",
+  artists: "/artists",
+  shows: "/shows",
+};
+export const imageUrl =
+  "https://images.unsplash.com/photo-1736289150235-7dc9b851511a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4MXx8fGVufDB8fHx8fA%3D%3D";
 
 // interface Link {
 //   text: string;

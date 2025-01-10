@@ -1,7 +1,6 @@
 import NextAuth, { NextAuthOptions, Session } from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 import { JWT } from "next-auth/jwt";
-import { getAuthUrl } from "../../../utils/functions";
 import axios from "axios";
 import { SpotifyAuthUrl, SpotifyScopes } from "../../../utils/constants";
 

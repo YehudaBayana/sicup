@@ -4,7 +4,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, { useState } from "react";
 
 const ReactQueryProvider = ({ children }: { children: React.ReactNode }) => {
-  // Instantiate QueryClient in a client-side context
   const [queryClient] = useState(() => new QueryClient());
 
   return (

@@ -2,7 +2,6 @@
 import React, { createContext, useContext } from "react";
 import spotify from "../pages/api/spotifyService";
 import SpotifyApi from "../pages/api/spotifyApi";
-// import SpotifyApi from '../services/spotifyApi';
 
 const SpotifyContext = createContext<SpotifyApi | null>(null);
 

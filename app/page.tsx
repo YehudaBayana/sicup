@@ -3,13 +3,14 @@
 
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { getAuthUrl } from "../utils/functions";
+import { Box } from "@mui/material";
+import { routes } from "../utils/constants";
 
 export default function Home() {
   const { data: session } = useSession();
 
   return (
-    <main>
+    <Box>
       <h1>Welcome to My Spotify App</h1>
       <div>
         {!session ? (
@@ -25,8 +26,8 @@ export default function Home() {
             <Link href="/dashboard">
               <button aria-label="Go to Dashboard">Go to playlists</button>
             </Link>
-            <Link href="/me">
-              <button aria-label="Go to Dashboard">Go to me</button>
+            <Link href={routes.albums}>
+              <button aria-label="Go to Dashboard">Go to albums</button>
             </Link>
             <button onClick={() => signOut()} aria-label="Logout">
               Logout
@@ -37,6 +38,6 @@ export default function Home() {
           </>
         )}
       </div>
-    </main>
+    </Box>
   );
 }
