@@ -1,6 +1,5 @@
 // app/layout.tsx
-import ReactQueryProvider from "../lib/react-query";
-// import "../styles/globals.css";
+import Providers from "./Providers";
 
 export default function RootLayout({
   children,
@@ -10,7 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
