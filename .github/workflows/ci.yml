@@ -27,7 +27,12 @@ jobs:
         run: yarn install
 
       - name: Run Unit Tests
-        run: yarn test
+        run: yarn test --runInBand
 
       - name: Run E2E Tests
-        run: yarn test:e2e
+        run: |
+          if [ -z "$(find tests/e2e -name '*.spec.ts')" ]; then
+            echo "No E2E tests found. Skipping."
+          else
+            yarn test:e2e
+          fi

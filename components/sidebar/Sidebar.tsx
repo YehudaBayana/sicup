@@ -5,9 +5,9 @@ import SidebarLogo from "./SidebarLogo";
 import SidebarSearch from "./SidebarSearch";
 import SidebarMenu from "./SidebarMenu";
 // import { menuItems } from "./MenuItems";
-import { SIDEBAR_WIDTH } from '../../utils/constants';
-import { colors } from '../../app/theme';
-import { useMenuItems } from './MenuItems';
+import { SIDEBAR_WIDTH } from "../../utils/constants";
+import { colors } from "../../app/theme";
+import { useMenuItems } from "./MenuItems";
 
 const Sidebar = () => {
   const [selectedItem, setSelectedItem] = useState("Home");
@@ -36,7 +36,8 @@ const Sidebar = () => {
         top: 0,
         left: 0,
         overflow: "auto",
-        borderRight: `2px solid ${theme.palette.divider}`
+        borderRight: `2px solid ${theme.palette.divider}`,
+        zIndex: 10,
       }}
     >
       <SidebarLogo />

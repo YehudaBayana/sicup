@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "types": ["node", "@playwright/test"],
+    "moduleResolution": "node",
+    "types": ["node", "jest", "@playwright/test", "@testing-library/jest-dom"],
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -9,7 +10,6 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -29,7 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "types/**/*.d.ts"
+    "types/**/*.d.ts",
+    "tests/**/*"
   ],
   "exclude": ["node_modules"]
 }
