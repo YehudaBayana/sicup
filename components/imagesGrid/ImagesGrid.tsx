@@ -47,7 +47,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ items, itemsType }) => {
               <CardContent
                 sx={{ padding: "5px", paddingBottom: "5px !important" }}
               >
-                <Typography variant="subtitle1" component="div" noWrap>
+                <Typography sx={{ textDecoration: "none" }} variant="subtitle1" component="div" noWrap>
                   {album.name}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary">

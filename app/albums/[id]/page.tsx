@@ -7,7 +7,7 @@ import { Box, Typography } from "@mui/material";
 import { useParams } from "next/navigation";
 import DragAndDropList from "../../../components/lists/playlist/DragAndDropList";
 
-export default function AlbumsPage() {
+export default function AlbumPage() {
   const params = useParams(); // Get params from URL
   const id = params?.id as string; // Explicitly cast `id` to a string
   const res = useSpotifyGetMyAlbums();

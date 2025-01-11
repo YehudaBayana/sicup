@@ -1,26 +1,28 @@
 import { Item } from "./types";
 
 export const SERVER_DOMAIN: string = "http://localhost:5001/";
+
+export const SIDEBAR_WIDTH = 240
 // import { Item } from "../types/Item";
 
-export const initialItems: Item[] = [
-  { id: "1", content: "Item 1" },
-  { id: "2", content: "Item 2" },
-  { id: "3", content: "Item 3" },
-  { id: "4", content: "Item 4" },
-  { id: "21", content: "Item 1" },
-  { id: "22", content: "Item 2" },
-  { id: "23", content: "Item 3" },
-  { id: "24", content: "Item 4" },
-  { id: "41", content: "Item 1" },
-  { id: "52", content: "Item 2" },
-  { id: "63", content: "Item 3" },
-  { id: "74", content: "Item 4" },
-  { id: "31", content: "Item 1" },
-  { id: "32", content: "Item 2" },
-  { id: "33", content: "Item 3" },
-  { id: "34", content: "Item 4" },
-];
+// export const initialItems: Item[] = [
+//   { id: "1", content: "Item 1" },
+//   { id: "2", content: "Item 2" },
+//   { id: "3", content: "Item 3" },
+//   { id: "4", content: "Item 4" },
+//   { id: "21", content: "Item 1" },
+//   { id: "22", content: "Item 2" },
+//   { id: "23", content: "Item 3" },
+//   { id: "24", content: "Item 4" },
+//   { id: "41", content: "Item 1" },
+//   { id: "52", content: "Item 2" },
+//   { id: "63", content: "Item 3" },
+//   { id: "74", content: "Item 4" },
+//   { id: "31", content: "Item 1" },
+//   { id: "32", content: "Item 2" },
+//   { id: "33", content: "Item 3" },
+//   { id: "34", content: "Item 4" },
+// ];
 
 export const QueryKeys = {
   Me: ["getProfile"] as const,

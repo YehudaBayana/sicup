@@ -1,11 +1,14 @@
 import React, { useMemo } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS as dndCSS } from "@dnd-kit/utilities";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
+import {
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Avatar,
+  IconButton,
+  useTheme,
+} from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { AlbumTracksItem } from "../../../utils/types";
 import { msToMinutesAndSeconds } from "../../../utils/functions";
@@ -26,6 +29,8 @@ const SortableItem: React.FC<SortableItemProps> = ({ item, imageSrc }) => {
     isDragging,
   } = useSortable({ id: item.id });
 
+  const theme = useTheme();
+
   const duration = useMemo(
     () => msToMinutesAndSeconds(item.duration_ms),
     [item.duration_ms]
@@ -37,14 +42,16 @@ const SortableItem: React.FC<SortableItemProps> = ({ item, imageSrc }) => {
     transform: dndCSS.Transform.toString(transform),
     transition,
     zIndex: isDragging ? 1000 : "auto",
-    backgroundColor: isDragging ? "#3a3a3a" : "#4f4f4f",
+    // backgroundColor: isDragging
+    //   ? theme.palette.action.hover
+    //   : theme.palette.background.paper,
     marginBottom: "5px",
     borderRadius: "4px",
     position: isDragging ? "relative" : "static",
     display: "flex",
     alignItems: "center",
     padding: "8px",
-    color: "white",
+    color: theme.palette.text.primary,
   };
 
   return (
@@ -54,7 +61,12 @@ const SortableItem: React.FC<SortableItemProps> = ({ item, imageSrc }) => {
           console.log("Avatar clicked");
         }}
       >
-        <Avatar src={imageSrc} alt="Album image" variant="square" />
+        <Avatar
+          src={imageSrc}
+          alt="Album image"
+          variant="square"
+          sx={{ borderRadius: theme.shape.borderRadius }}
+        />
       </ListItemAvatar>
       <ListItemText
         onPointerDown={(e) => {
@@ -74,17 +86,22 @@ const SortableItem: React.FC<SortableItemProps> = ({ item, imageSrc }) => {
             fontWeight: "bold",
           },
           "& .MuiTypography-body2": {
-            color: "#cccccc",
+            color: theme.palette.text.secondary,
           },
         }}
       />
       <div
-        style={{ marginLeft: "auto", marginRight: "10px", fontSize: "0.9rem" }}
+        style={{
+          marginLeft: "auto",
+          marginRight: "10px",
+          fontSize: "0.9rem",
+          // color: theme.palette.text.secondary,
+        }}
       >
         {duration}
       </div>
       <IconButton {...listeners}>
-        <MoreVertIcon style={{ color: "#c084f0" }} />
+        <MoreVertIcon sx={{ color: theme.palette.primary.main }} />
       </IconButton>
     </ListItem>
   );

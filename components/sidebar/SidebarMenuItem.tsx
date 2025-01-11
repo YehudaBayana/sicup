@@ -1,5 +1,5 @@
 import React from "react";
-import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { ListItem, ListItemIcon, ListItemText, useTheme } from "@mui/material";
 import Link from "next/link";
 
 interface SidebarMenuItemProps {
@@ -17,6 +17,8 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
   isSelected,
   onClick,
 }) => {
+  const theme = useTheme();
+
   return (
     <Link style={{ textDecoration: "none" }} href={link!}>
       <ListItem
@@ -26,20 +28,32 @@ const SidebarMenuItem: React.FC<SidebarMenuItemProps> = ({
           borderRadius: 1,
           marginBottom: 1,
           padding: "4px 16px",
-          backgroundColor: isSelected ? "#616161" : "transparent",
+          backgroundColor: isSelected
+            ? theme.palette.action.selected
+            : "transparent",
           "&:hover": {
-            backgroundColor: "#757575",
+            backgroundColor: theme.palette.action.hover,
           },
         }}
         onClick={onClick}
       >
-        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemIcon
+          sx={{
+            color: isSelected
+              ? theme.palette.primary.main
+              : theme.palette.text.primary,
+          }}
+        >
+          {icon}
+        </ListItemIcon>
         <ListItemText
           primary={text}
           sx={{
             "& .MuiListItemText-primary": {
               fontSize: "14px",
-              color: "#fff",
+              color: isSelected
+                ? theme.palette.primary.main
+                : theme.palette.text.primary,
             },
           }}
         />

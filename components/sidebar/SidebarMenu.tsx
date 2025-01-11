@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Divider, Typography } from "@mui/material";
+import { List, Divider, Typography, useTheme } from "@mui/material";
 import SidebarMenuItem from "./SidebarMenuItem";
 
 interface MenuItem {
@@ -21,12 +21,20 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
   selectedItem,
   onSelect,
 }) => {
+  const theme = useTheme();
+
   return (
     <List sx={{ width: "100%" }}>
       {menuItems.map((item, index) => {
         if (item.divider) {
           return (
-            <Divider key={index} sx={{ borderColor: "#757575", marginY: 2 }} />
+            <Divider
+              key={index}
+              sx={{
+                borderColor: theme.palette.divider,
+                marginY: 2,
+              }}
+            />
           );
         }
 
@@ -36,7 +44,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
               key={index}
               variant="body2"
               sx={{
-                color: "#bdbdbd",
+                color: theme.palette.text.secondary,
                 textTransform: "uppercase",
                 marginLeft: 2,
                 marginBottom: 1,

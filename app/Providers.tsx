@@ -6,8 +6,9 @@ import ReactQueryProvider from "../lib/react-query";
 import { SpotifyProvider } from "../lib/spotify-context";
 import { useEffect } from "react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import { theme } from "./theme";
+// import { theme } from "./theme";
 import { SpotifyPlayerProvider } from "../lib/sporify-player-context";
+import { darkTheme } from './theme';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -29,7 +30,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <SessionProvider>
       <SpotifyProvider>
         <SpotifyPlayerProvider>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={darkTheme}>
             <CssBaseline />
             <ReactQueryProvider>{children}</ReactQueryProvider>
           </ThemeProvider>

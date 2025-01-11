@@ -18,6 +18,7 @@ import Paper from "@mui/material/Paper";
 import SortableItem from "./SortableItem";
 import { disableScroll, enableScroll } from "../../../utils/functions";
 import { AlbumTracksItem } from "../../../utils/types";
+import { Divider } from '@mui/material';
 // import { disableScroll, enableScroll } from "../utils/scroll";
 
 interface DragAndDropListProps {
@@ -87,11 +88,13 @@ const DragAndDropList: React.FC<DragAndDropListProps> = ({
           sx={{
             width: "100%",
             marginTop: "20px",
-            backgroundColor: "#4f4f4f",
+            // backgroundColor: "#4f4f4f",
           }}
         >
-          {items.map((item) => (
+          {items.map((item) => (<>
             <SortableItem imageSrc={imageSrc} key={item.id} item={item} />
+            <Divider />
+          </>
           ))}
         </List>
       </SortableContext>

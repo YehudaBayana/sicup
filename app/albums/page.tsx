@@ -30,7 +30,7 @@ export default function AlbumsPage() {
   return (
     <Box sx={{ padding: 2 }}>
       <Typography variant="h4" gutterBottom>
-        Recently Added
+        My Albums
       </Typography>
       <ImageGrid itemsType={routes.albums} items={items} />
     </Box>
