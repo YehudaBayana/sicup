@@ -27,7 +27,16 @@ jobs:
         run: yarn install
 
       - name: Run Unit Tests
-        run: yarn test
+        run: yarn test --runInBand # Prevent parallelization in CI
 
       - name: Run E2E Tests
         run: yarn test:e2e
+
+      - name: Install Playwright Browsers
+        run: npx playwright install
+
+      - name: Debug Node.js Environment
+        run: node -v && yarn list --depth=0
+
+      - name: Display Jest Config
+        run: jest --showConfig
