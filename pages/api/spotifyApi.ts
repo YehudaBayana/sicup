@@ -18,17 +18,26 @@ class SpotifyApi {
   // Get the access token from the session (next-auth)
   async fetchAccessTokenFromSession(): Promise<void> {
     try {
-      // Fetch the session from the next-auth session API
       const response = await axios.get("/api/auth/session");
       const session = response.data;
 
       if (session?.accessToken) {
         this.accessToken = session.accessToken;
       } else {
-        throw new Error("No access token found in session.");
+        throw new Error("No access token found in session."); // Specific error
       }
     } catch (error: unknown) {
       console.error("Error fetching access token from session:", error);
+
+      // Re-throw the original error for debugging purposes
+      if (
+        error instanceof Error &&
+        error.message === "No access token found in session."
+      ) {
+        throw error; // Pass through specific error
+      }
+
+      // Otherwise, throw the generic error
       throw new Error("Failed to retrieve access token from session.");
     }
   }

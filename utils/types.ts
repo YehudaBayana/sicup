@@ -1,4 +1,4 @@
-export type SearchType = "track" | "playlist" | "podcast" | "show";
+export type SearchType = "track" | "playlist" | "podcast" | "show" | "artist";
 export interface Item {
   id: string;
   content: string;

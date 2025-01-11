@@ -12,7 +12,7 @@ import {
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { AlbumTracksItem } from "../../../utils/types";
 import { msToMinutesAndSeconds } from "../../../utils/functions";
-import { useSpotifyPlayer } from "../../../lib/sporify-player-context";
+import { useSpotifyPlayer } from "../../../lib/spotify-player-context";
 
 interface SortableItemProps {
   item: AlbumTracksItem;

@@ -9,7 +9,7 @@ import { CacheProvider } from "@emotion/react";
 import { useServerInsertedHTML } from "next/navigation";
 import createEmotionServer from "@emotion/server/create-instance";
 import SpotifyPlayer from "../components/spotifyPlayer/SpotifyPlayer";
-import { SIDEBAR_WIDTH } from '../utils/constants';
+import { SIDEBAR_WIDTH } from "../utils/constants";
 
 const clientSideEmotionCache = createEmotionCache();
 export default function RootLayout({
@@ -42,7 +42,7 @@ export default function RootLayout({
                 right: 0,
                 width: `calc(100vw - ${SIDEBAR_WIDTH}px)`,
                 height: "auto",
-                zIndex: 9999
+                zIndex: 9,
               }}
             >
               <SpotifyPlayer />

@@ -7,8 +7,8 @@ import { SpotifyProvider } from "../lib/spotify-context";
 import { useEffect } from "react";
 import { ThemeProvider, CssBaseline } from "@mui/material";
 // import { theme } from "./theme";
-import { SpotifyPlayerProvider } from "../lib/sporify-player-context";
-import { darkTheme } from './theme';
+import { SpotifyPlayerProvider } from "../lib/spotify-player-context";
+import { darkTheme } from "./theme";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   useEffect(() => {

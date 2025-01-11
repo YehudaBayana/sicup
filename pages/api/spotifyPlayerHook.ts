@@ -2,7 +2,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
 import { useSession } from "next-auth/react";
 import _ from "lodash";
-import { SpotifyPlayerProviderProps } from "../../lib/sporify-player-context";
+import { SpotifyPlayerProviderProps } from "../../lib/spotify-player-context";
 import { AlbumTracksItem } from "../../utils/types";
 
 export const useSpotifyPlayerHook = (): SpotifyPlayerProviderProps => {

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["node", "@playwright/test"],
+    "types": ["node", "@playwright/test", "jest", "@testing-library/jest-dom"],
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -29,7 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "types/**/*.d.ts"
+    "types/**/*.d.ts",
+    "tests/**/*"
   ],
   "exclude": ["node_modules"]
 }
