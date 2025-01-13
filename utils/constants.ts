@@ -1,28 +1,5 @@
-import { Item } from "./types";
-
 export const SERVER_DOMAIN: string = "http://localhost:5001/";
-
-export const SIDEBAR_WIDTH = 240
-// import { Item } from "../types/Item";
-
-// export const initialItems: Item[] = [
-//   { id: "1", content: "Item 1" },
-//   { id: "2", content: "Item 2" },
-//   { id: "3", content: "Item 3" },
-//   { id: "4", content: "Item 4" },
-//   { id: "21", content: "Item 1" },
-//   { id: "22", content: "Item 2" },
-//   { id: "23", content: "Item 3" },
-//   { id: "24", content: "Item 4" },
-//   { id: "41", content: "Item 1" },
-//   { id: "52", content: "Item 2" },
-//   { id: "63", content: "Item 3" },
-//   { id: "74", content: "Item 4" },
-//   { id: "31", content: "Item 1" },
-//   { id: "32", content: "Item 2" },
-//   { id: "33", content: "Item 3" },
-//   { id: "34", content: "Item 4" },
-// ];
+export const SIDEBAR_WIDTH = 240;
 
 export const QueryKeys = {
   Me: ["getProfile"] as const,
@@ -30,6 +7,8 @@ export const QueryKeys = {
   MyAlbums: ["getMyAlbums"] as const,
   Album: (id: string) => ["getAlbum", id] as const,
   Playlist: (id: string) => ["getPlaylist", id] as const,
+  UserPlaylists: (id: string) => ["getUserPlaylists", id] as const,
+  PlaylistTracks: (id: string) => ["getPlaylistTracks", id] as const,
 };
 
 export const searchMenu: string[] = [
@@ -49,27 +28,8 @@ export const routes = {
 export const imageUrl =
   "https://images.unsplash.com/photo-1736289150235-7dc9b851511a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4MXx8fGVufDB8fHx8fA%3D%3D";
 
-// interface Link {
-//   text: string;
-//   path: string;
-//   icon: JSX.Element;
-// }
-
-// export const links: Link[] = [
-//   {
-//     text: "explore",
-//     path: "/",
-//     icon: <HomeIcon />,
-//   },
-//   {
-//     text: "search",
-//     path: "/search",
-//     icon: <SearchIcon />,
-//   },
-// ];
-
 export const drawerWidth: number = 240;
-export const DRAWERHEIGHT: number = 65;
+export const DRAWER_HEIGHT: number = 65;
 export const PLAYLIST_CARD_WIDTH: number = 200;
 export const MIN_OPEN_WIDTH: number = 210;
 export const CLOSE_WIDTH: number = 70;

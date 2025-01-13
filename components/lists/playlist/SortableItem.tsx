@@ -42,9 +42,6 @@ const SortableItem: React.FC<SortableItemProps> = ({ item, imageSrc }) => {
     transform: dndCSS.Transform.toString(transform),
     transition,
     zIndex: isDragging ? 1000 : "auto",
-    // backgroundColor: isDragging
-    //   ? theme.palette.action.hover
-    //   : theme.palette.background.paper,
     marginBottom: "5px",
     borderRadius: "4px",
     position: isDragging ? "relative" : "static",
@@ -95,7 +92,6 @@ const SortableItem: React.FC<SortableItemProps> = ({ item, imageSrc }) => {
           marginLeft: "auto",
           marginRight: "10px",
           fontSize: "0.9rem",
-          // color: theme.palette.text.secondary,
         }}
       >
         {duration}

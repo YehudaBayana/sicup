@@ -25,6 +25,18 @@ export const useSpotifyGetMyPlaylists = () => {
   });
 };
 
+export const useSpotifyGetUsersPlaylists = (userId: string) => {
+  const spotify = useSpotify();
+
+  return useQuery({
+    queryKey: QueryKeys.UserPlaylists(userId),
+    queryFn: async () => {
+      return await spotify.getUsersPlaylists(userId);
+    },
+    enabled: !!userId,
+  });
+};
+
 export const useSpotifyGetMyAlbums = () => {
   const spotify = useSpotify();
 
@@ -44,8 +56,36 @@ export const useSpotifyGetAlbumsTracks = (albumId: string) => {
     },
   });
 };
+export const useSpotifyGetPlaylistsTracks = (playlistId: string) => {
+  const spotify = useSpotify();
 
-// POST: Add a track to a playlist
+  return useQuery({
+    queryKey: QueryKeys.PlaylistTracks(playlistId),
+    queryFn: async () => {
+      let allTracks: any[] = [];
+      let nextPage: string | null = `/playlists/${playlistId}/tracks`;
+
+      while (nextPage) {
+        const response = await spotify.request(nextPage);
+        const data = response as { items: any[]; next: string | null };
+
+        allTracks = [...allTracks, ...data.items];
+        nextPage = data.next ? data.next.replace(spotify.baseUrl, "") : null;
+      }
+
+      allTracks.sort(
+        (a, b) =>
+          new Date(b.added_at).getTime() - new Date(a.added_at).getTime()
+      );
+
+      return {
+        items: allTracks,
+      };
+    },
+    enabled: !!playlistId,
+  });
+};
+
 export const useAddTrackToPlaylist = () => {
   const spotify = useSpotify();
   const queryClient = useQueryClient();
@@ -69,7 +109,6 @@ export const useAddTrackToPlaylist = () => {
   });
 };
 
-// PUT: Update a playlist's details
 export const useUpdatePlaylistDetails = () => {
   const spotify = useSpotify();
   const queryClient = useQueryClient();
@@ -93,7 +132,6 @@ export const useUpdatePlaylistDetails = () => {
   });
 };
 
-// DELETE: Remove a track from a playlist
 export const useRemoveTrackFromPlaylist = () => {
   const spotify = useSpotify();
   const queryClient = useQueryClient();

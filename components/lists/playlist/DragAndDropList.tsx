@@ -1,3 +1,4 @@
+// DragAndDropList.tsx
 import React, { useEffect, useState } from "react";
 import {
   DndContext,
@@ -17,13 +18,12 @@ import List from "@mui/material/List";
 import Paper from "@mui/material/Paper";
 import SortableItem from "./SortableItem";
 import { disableScroll, enableScroll } from "../../../utils/functions";
-import { AlbumTracksItem } from "../../../utils/types";
-import { Divider } from '@mui/material';
-// import { disableScroll, enableScroll } from "../utils/scroll";
+import { AlbumTracksItem, Track } from "../../../utils/types";
+import { Divider, Typography } from "@mui/material";
 
 interface DragAndDropListProps {
-  isDraggable: boolean; // Flag to enable/disable drag-and-drop
-  listItems: AlbumTracksItem[];
+  isDraggable: boolean;
+  listItems: AlbumTracksItem[] | Track[];
   imageSrc?: string;
 }
 const DragAndDropList: React.FC<DragAndDropListProps> = ({
@@ -31,20 +31,23 @@ const DragAndDropList: React.FC<DragAndDropListProps> = ({
   listItems,
   imageSrc,
 }) => {
-  const [items, setItems] = useState<AlbumTracksItem[]>(listItems);
+  const [items, setItems] = useState<AlbumTracksItem[] | Track[]>(listItems);
   const [hydrated, setHydrated] = useState(false);
-
-  const sensors = useSensors(
-    useSensor(PointerSensor),
-    useSensor(KeyboardSensor)
-  );
 
   useEffect(() => {
     setHydrated(true);
   }, []);
 
+  useEffect(() => {
+    setItems(listItems);
+  }, [listItems]);
+
+  const sensors = isDraggable
+    ? useSensors(useSensor(PointerSensor), useSensor(KeyboardSensor))
+    : undefined;
+
   if (!hydrated) {
-    return null; // Render nothing on the server
+    return null;
   }
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -55,25 +58,27 @@ const DragAndDropList: React.FC<DragAndDropListProps> = ({
       return;
     }
 
-    setItems((items) => {
-      const oldIndex = items.findIndex((item) => item.id === active.id);
-      const newIndex = items.findIndex((item) => item.id === over.id);
-      return arrayMove(items, oldIndex, newIndex);
-    });
+    // Type guard to ensure `items` is of the correct type
+    if (items.every((item) => "track" in item)) {
+      setItems((prevItems) => {
+        const oldIndex = prevItems.findIndex((item) => item.id === active.id);
+        const newIndex = prevItems.findIndex((item) => item.id === over.id);
+        return arrayMove(prevItems as Track[], oldIndex, newIndex);
+      });
+    } else {
+      console.error("Items are not of type Track[]");
+    }
   };
 
   if (!items || items.length === 0) {
-    return null;
+    return <Typography variant="h6">No items to display.</Typography>;
   }
-  console.log("items ", items);
 
   return (
     <DndContext
-      sensors={isDraggable ? sensors : undefined} // Disable sensors if not draggable
+      sensors={sensors}
       collisionDetection={isDraggable ? closestCenter : undefined}
-      onDragStart={() => {
-        if (isDraggable) disableScroll();
-      }}
+      onDragStart={() => isDraggable && disableScroll()}
       onDragEnd={(event) => {
         if (isDraggable) enableScroll();
         handleDragEnd(event);
@@ -88,13 +93,16 @@ const DragAndDropList: React.FC<DragAndDropListProps> = ({
           sx={{
             width: "100%",
             marginTop: "20px",
-            // backgroundColor: "#4f4f4f",
           }}
         >
-          {items.map((item) => (<>
-            <SortableItem imageSrc={imageSrc} key={item.id} item={item} />
-            <Divider />
-          </>
+          {items.map((item) => (
+            <React.Fragment key={item.id}>
+              <SortableItem
+                imageSrc={imageSrc || (item as Track).album.images[0].url}
+                item={item}
+              />
+              <Divider />
+            </React.Fragment>
           ))}
         </List>
       </SortableContext>
