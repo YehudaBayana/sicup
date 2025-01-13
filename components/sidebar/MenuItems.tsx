@@ -81,7 +81,7 @@ export const useMenuItems = () => {
           sx={{ color: SIDEBAR_ICON_COLOR, fontSize: SIDEBAR_ICON_SIZE }}
         />
       ),
-      link: routes.albums,
+      link: routes.playlists,
     },
   ];
 };
