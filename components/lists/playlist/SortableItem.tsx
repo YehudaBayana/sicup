@@ -42,11 +42,12 @@ const SortableItem: React.FC<SortableItemProps> = ({ item, imageSrc }) => {
     transform: dndCSS.Transform.toString(transform),
     transition,
     zIndex: isDragging ? 1000 : "auto",
+    marginBottom: "5px",
     borderRadius: "4px",
     position: isDragging ? "relative" : "static",
     display: "flex",
     alignItems: "center",
-    padding: "2px",
+    padding: "8px",
     color: theme.palette.text.primary,
   };
 

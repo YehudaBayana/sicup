@@ -5,7 +5,6 @@ import LeftControls from "./LeftControls";
 import TrackDetails from "./TrackDetails";
 import TimeSlider from "./TimeSlider";
 import { useSpotifyPlayer } from "../../lib/spotify-player-context";
-import SidebarSearch from "../sidebar/SidebarSearch";
 
 const PlayerBar: React.FC = () => {
   const {
@@ -43,16 +42,13 @@ const PlayerBar: React.FC = () => {
         handleNext={handleNext}
         handlePrevious={handlePrevious}
       />
-      <Box sx={{ flex: 2 }}>
+      <Box sx={{ flex: 1 }}>
         <TrackDetails currentTrack={currentTrack} />
         <TimeSlider
           position={position}
           duration={duration}
           handleSliderChange={handleSliderChange}
         />
-      </Box>
-      <Box sx={{ flex: 1 }}>
-        <SidebarSearch />
       </Box>
     </Box>
   );
