@@ -49,21 +49,21 @@
 // });
 
 // src/theme/theme.ts
-import { createTheme, ThemeOptions } from '@mui/material/styles';
+import { createTheme, ThemeOptions } from "@mui/material/styles";
 export const colors = {
-main:{
-  primary: '#FF8600',
-  secondary:'#f48fb1',
-},
-background:{
-  default: '#007EA7',
-  paper: '#003459',
-},
-text: {
-  primary: '#ffffff',
-  secondary: '#bdbdbd',
-},
-}
+  main: {
+    primary: "#FF8600",
+    secondary: "#f48fb1",
+  },
+  background: {
+    default: "#007EA7",
+    paper: "#003459",
+  },
+  text: {
+    primary: "#ffffff",
+    secondary: "#bdbdbd",
+  },
+};
 const darkThemeOptions: ThemeOptions = {
   // palette: {
   //   mode: 'dark',
@@ -86,16 +86,16 @@ const darkThemeOptions: ThemeOptions = {
   //   fontFamily: 'Roboto, Arial, sans-serif',
   // },
   palette: {
-    mode: 'dark',
+    mode: "dark",
     primary: {
       main: colors.main.primary,
     },
     secondary: {
-      main: '#f48fb1',
+      main: "#f48fb1",
     },
     background: {
       default: colors.background.default,
-          paper: colors.background.paper,
+      paper: colors.background.paper,
     },
     text: {
       primary: colors.text.primary,
@@ -103,12 +103,12 @@ const darkThemeOptions: ThemeOptions = {
     },
   },
   typography: {
-    fontFamily: 'Roboto, Arial, sans-serif',
+    fontFamily: "Roboto, Arial, sans-serif",
   },
-  shape:{
-    borderRadius: 2
+  shape: {
+    borderRadius: 2,
   },
-    components: {
+  components: {
     MuiCssBaseline: {
       styleOverrides: {
         body: {
@@ -117,7 +117,8 @@ const darkThemeOptions: ThemeOptions = {
           boxSizing: "border-box",
         },
         a: {
-          textDecoration: 'none', // Removes underline for all <a> tags
+          textDecoration: "none",
+          color: "unset",
         },
       },
     },
@@ -126,7 +127,7 @@ const darkThemeOptions: ThemeOptions = {
         root: {
           border: "none",
           boxShadow: "none",
-          background:"rgba(0,0,0,0)"
+          background: "rgba(0,0,0,0)",
         },
       },
     },
