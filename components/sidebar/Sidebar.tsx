@@ -41,7 +41,7 @@ const Sidebar = () => {
       }}
     >
       <SidebarLogo />
-      {/* <SidebarSearch /> */}
+      <SidebarSearch />
       <SidebarMenu
         menuItems={menuItems}
         selectedItem={selectedItem}

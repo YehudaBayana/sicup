@@ -235,6 +235,31 @@ export interface ExternalIdsPlaylistTrack {
   isrc: string;
 }
 
+// export interface Album {
+//   available_markets: string[];
+//   type: string;
+//   album_type: string;
+//   href: string;
+//   id: string;
+//   images: Image[];
+//   name: string;
+//   release_date: string;
+//   release_date_precision: string;
+//   uri: string;
+//   artists: Artist[];
+//   external_urls: ExternalUrls;
+//   total_tracks: number;
+// }
+
+// export interface Artist {
+//   external_urls: Externalurls;
+//   href: string;
+//   id: string;
+//   name: string;
+//   type: string;
+//   uri: string;
+// }
+
 export interface AddedBy {
   external_urls: ExternalUrls;
   href: string;
@@ -242,9 +267,3 @@ export interface AddedBy {
   type: string;
   uri: string;
 }
-
-// gpt start
-export type PlaylistWithTracks = MyPlaylistItem & {
-  ActualTracks: Track[];
-};
-// gpt end

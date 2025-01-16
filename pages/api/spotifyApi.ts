@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  GetMyPlaylistsResponse,
-  GetPlaylistTracksRes,
-  SearchType,
-} from "../../utils/types";
+import { SearchType } from "../../utils/types";
 
 class SpotifyApi {
   private accessToken: string;
@@ -75,18 +71,16 @@ class SpotifyApi {
     return this.request(`/me`);
   }
 
-  async getMyPlaylists(): Promise<GetMyPlaylistsResponse> {
-    return this.request(`/me/playlists`) as Promise<GetMyPlaylistsResponse>;
+  async getMyPlaylists(): Promise<unknown> {
+    return this.request(`/me/playlists`);
   }
 
   async getUsersPlaylists(user_id: string): Promise<unknown> {
     return this.request(`/users/${user_id}/playlists`);
   }
 
-  async getPlaylistTracks(playlist_id: string): Promise<GetPlaylistTracksRes> {
-    return this.request(
-      `/playlists/${playlist_id}/tracks`
-    ) as Promise<GetPlaylistTracksRes>;
+  async getPlaylistTracks(playlist_id: string): Promise<unknown> {
+    return this.request(`/playlists/${playlist_id}/tracks`);
   }
 
   async getMyAlbums(): Promise<unknown> {

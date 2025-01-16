@@ -7,13 +7,13 @@ import React, {
 } from "react";
 import { SessionContextValue } from "next-auth/react";
 import { useSpotifyPlayerHook } from "../pages/api/spotifyPlayerHook";
-import { AlbumTracksItem, Track } from "../utils/types";
+import { AlbumTracksItem } from "../utils/types";
 
 export interface SpotifyPlayerProviderProps {
   player: Spotify.Player | null;
   deviceId: string | null;
   isPaused: boolean;
-  currentTrack: Track | null;
+  currentTrack: AlbumTracksItem | null;
   position: number;
   duration: number;
   handlePlayTrack: (trackUris: string[]) => void; // Include this
