@@ -1,13 +1,10 @@
 import React from "react";
 import { Box, Typography, Avatar } from "@mui/material";
-import { Artist } from "../../utils/types";
+import { Artist, Track } from "../../utils/types";
 import SidebarLogo from "../sidebar/SidebarLogo";
 
 interface TrackDetailsProps {
-  currentTrack: {
-    name: string;
-    artists: Artist[];
-  } | null;
+  currentTrack: Track | null;
 }
 
 const TrackDetails: React.FC<TrackDetailsProps> = ({ currentTrack }) => (
@@ -24,7 +21,7 @@ const TrackDetails: React.FC<TrackDetailsProps> = ({ currentTrack }) => (
   >
     <Avatar
       alt="Track Cover"
-      src="/musicNote.svg" // Replace with the actual cover image URL
+      src={currentTrack ? currentTrack.album.images[0].url : "/musicNote.svg"} // Replace with the actual cover image URL
       sx={{ width: "48px", height: "48px", borderRadius: "4px" }}
     />
     <Box sx={{ textAlign: "center", flex: 1 }}>

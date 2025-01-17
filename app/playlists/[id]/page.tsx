@@ -6,6 +6,8 @@ import { useParams } from "next/navigation";
 import _ from "lodash";
 import DragAndDropList from "../../../components/lists/playlist/DragAndDropList";
 
+import PlaylistCarousel from "../../../components/myPlaylists/PlaylistCarousel";
+
 export default function PlaylistPage() {
   const params = useParams(); // Get params from URL
   const id = params?.id as string;
@@ -43,6 +45,8 @@ export default function PlaylistPage() {
       <Typography variant="h4" gutterBottom>
         Playlist Songs
       </Typography>
+      {/* <PlaylistCarousel /> */}
+      {/* <PlaylistCard tracks={uniqueTracks.slice(0, 4)} /> */}
       <DragAndDropList isDraggable={true} listItems={uniqueTracks} />
     </Box>
   );
