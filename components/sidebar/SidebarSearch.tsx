@@ -13,8 +13,8 @@ const SidebarSearch = () => {
         borderRadius: 1,
         display: "flex",
         alignItems: "center",
-        paddingX: 1,
-        marginBottom: 3,
+        paddingLeft: 2,
+        // marginBottom: 3,
       }}
     >
       <InputBase

@@ -6,7 +6,7 @@ jest.mock("../../../lib/spotify-player-context");
 
 describe("PlayerBar", () => {
   const mockContext = {
-    currentTrack: { name: "Test Track", artists: [{ name: "Test Artist" }] },
+    currentTrack: { name: "Test Track", artists: [{ name: "Test Artist" }], album: { images: [{ url: '/musicNote.svg' }] } },
     isPaused: true,
     position: 30,
     duration: 120,
